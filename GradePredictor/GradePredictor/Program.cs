@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using GradePredictor.Controllers;
+using GradePredictor.Config;
 using GradePredictor.Models;
 using System.Data.SQLite;
+using GradePredictor.Views;
 
 namespace GradePredictor
 {
@@ -17,10 +18,11 @@ namespace GradePredictor
         [STAThread]
         static void Main()
         {
-            /*Application.EnableVisualStyles();
+            Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());*/
+            Application.Run(new MainForm());
 
+            /*
             Console.WriteLine("Hello");
 
             DBConnection.Connect();
@@ -31,7 +33,7 @@ namespace GradePredictor
             while(reader.Read())
             {
                 Console.WriteLine(reader[Student.STUDENT_ID]+" "+reader[Student.STUDENT_NAME]);
-            }
+            }*/
             
         }
     }

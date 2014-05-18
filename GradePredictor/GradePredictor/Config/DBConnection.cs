@@ -6,17 +6,20 @@ using System.Threading.Tasks;
 using System.Data.SQLite;
 using GradePredictor.Models;
 
-namespace GradePredictor.Controllers
+namespace GradePredictor.Config
 {
 
     /// <author> Shamal Perera </author>
-    /// <datecreated>17-05-2014</datecreated>
-    /// <summary>Connection class to the database</summary>
+    /// <datecreated>18-05-2014</datecreated>
+    /// <summary>Connection to the database</summary>
     public static class DBConnection
     {
 
         private static SQLiteConnection conn;
 
+        /// <summary>
+        /// Creates a new database
+        /// </summary>
         private static void Create()
         {
             SQLiteConnection.CreateFile("GradePredictor.sqlite");
@@ -37,7 +40,9 @@ namespace GradePredictor.Controllers
             CreateTables();
         }
 
-
+        /// <summary>
+        /// Creates Student, Module and Assessment tables in the database
+        /// </summary>
         private static void CreateTables()
         {
 
@@ -55,12 +60,12 @@ namespace GradePredictor.Controllers
 
             #region Create Module Table
             string sql_module = "CREATE TABLE IF NOT EXISTS " + Module.TABLE + "("
-                            + Module.ID + " INT AUTO INCREMENT PRIMARY KEY,"
                             + Student.STUDENT_ID + " INT(8),"
                             + Module.CODE + " VARCHAR(10),"
                             + Module.NAME + " VARCHAR(30),"
                             + Module.CREDITS + " INT(2),"
                             + Module.LEVEL + " INT(1) CHECK(" + Module.LEVEL + " IN(4,5,6)),"
+                            + "PRIMARY KEY(" + Student.STUDENT_ID + "," + Module.CODE + "),"
                             + "FOREIGN KEY(" + Student.STUDENT_ID + ") REFERENCES "
                             + Student.TABLE + "(" + Student.STUDENT_ID + "));";
 
@@ -72,13 +77,17 @@ namespace GradePredictor.Controllers
 
             #region Create Assessment Table
             string sql_assessment = "CREATE TABLE IF NOT EXISTS " + Assessment.TABLE + "("
-                            + Assessment.ID + " INT AUTO INCREMENT PRIMARY KEY,"
-                            + Module.ID + " INT,"
+                            + Assessment.ID + " INT,"
+                            + Student.STUDENT_ID + " INT(8),"
+                            + Module.CODE + " VARCHAR(10),"
                             + Assessment.TYPE + " VARCHAR(10),"
                             + Assessment.WEIGHT + " INT(2),"
                             + Assessment.MARK + " INT(3),"
-                            + "FOREIGN KEY(" + Module.ID + ") REFERENCES "
-                            + Module.TABLE + "(" + Module.ID + "));";
+                            + "PRIMARY KEY(" + Assessment.ID + "," + Student.STUDENT_ID + "," + Module.CODE + "),"
+                            + "FOREIGN KEY(" + Student.STUDENT_ID + ") REFERENCES "
+                            + Module.TABLE + "(" + Student.STUDENT_ID + "),"
+                            + "FOREIGN KEY(" + Module.CODE + ") REFERENCES "
+                            + Module.TABLE + "(" + Module.CODE + "));";
 
             SQLiteCommand command3 = new SQLiteCommand(sql_assessment, conn);
 
@@ -87,7 +96,9 @@ namespace GradePredictor.Controllers
             #endregion
         }
 
-
+        /// <summary>
+        /// Drop all the tables
+        /// </summary>
         private static void DropTables()
         {
 
@@ -130,9 +141,9 @@ namespace GradePredictor.Controllers
 
 
         /// <summary>
-        /// Pass sql query to change content in the database (insert, update, delete)
+        /// SQL query (insert, update, delete)
         /// </summary>
-        /// <param name="sql">"INSERT INTO TABLE_NAME VALUES('0')"</param>
+        /// <param name="sql">"eg :- INSERT INTO TABLE_NAME VALUES('0')"</param>
         /// <returns></returns>
         public static bool Set(string sql)
         {
@@ -158,9 +169,9 @@ namespace GradePredictor.Controllers
 
 
         /// <summary>
-        /// Get results from a sql query
+        /// SQL query (select)
         /// </summary>
-        /// <param name="sql">"SELECT * FROM TABLE_NAME"</param>
+        /// <param name="sql">"eg:- SELECT * FROM TABLE_NAME"</param>
         /// <returns></returns>
         public static SQLiteDataReader Get(string sql)
         {
@@ -177,3 +188,4 @@ namespace GradePredictor.Controllers
     }
 
 }
+//__________________________________END__________________________________\\

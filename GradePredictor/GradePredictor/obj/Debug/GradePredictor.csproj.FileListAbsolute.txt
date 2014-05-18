@@ -11,3 +11,10 @@ C:\Users\Shamal\Documents\Visual Studio 2013\Projects\GradePredictor\GradePredic
 C:\Users\Shamal\Documents\Visual Studio 2013\Projects\OOD\OOD\GradePredictor\GradePredictor\bin\Debug\GradePredictor.exe.config
 C:\Users\Shamal\Documents\Visual Studio 2013\Projects\OOD\OOD\GradePredictor\GradePredictor\obj\Debug\GradePredictor.exe
 C:\Users\Shamal\Documents\Visual Studio 2013\Projects\OOD\OOD\GradePredictor\GradePredictor\obj\Debug\GradePredictor.pdb
+C:\Users\Shamal\Documents\Visual Studio 2013\Projects\OOD\OOD\GradePredictor\GradePredictor\obj\Debug\GradePredictor.csprojResolveAssemblyReference.cache
+C:\Users\Shamal\Documents\Visual Studio 2013\Projects\OOD\OOD\GradePredictor\GradePredictor\obj\Debug\GradePredictor.Properties.Resources.resources
+C:\Users\Shamal\Documents\Visual Studio 2013\Projects\OOD\OOD\GradePredictor\GradePredictor\obj\Debug\GradePredictor.Views.MainForm.resources
+C:\Users\Shamal\Documents\Visual Studio 2013\Projects\OOD\OOD\GradePredictor\GradePredictor\obj\Debug\GradePredictor.csproj.GenerateResource.Cache
+C:\Users\Shamal\Documents\Visual Studio 2013\Projects\OOD\OOD\GradePredictor\GradePredictor\bin\Debug\GradePredictor.exe
+C:\Users\Shamal\Documents\Visual Studio 2013\Projects\OOD\OOD\GradePredictor\GradePredictor\bin\Debug\GradePredictor.pdb
+C:\Users\Shamal\Documents\Visual Studio 2013\Projects\OOD\OOD\GradePredictor\GradePredictor\bin\Debug\System.Data.SQLite.xml
