@@ -30,24 +30,15 @@
         {
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageStart = new System.Windows.Forms.TabPage();
+            this.buttonGo = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPageL4 = new System.Windows.Forms.TabPage();
-            this.tabPageL5 = new System.Windows.Forms.TabPage();
-            this.tabPageL6 = new System.Windows.Forms.TabPage();
-            this.tabPageSummary = new System.Windows.Forms.TabPage();
-            this.buttonGo = new System.Windows.Forms.Button();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.menuItemOption = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPageL5 = new System.Windows.Forms.TabPage();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,6 +51,7 @@
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabPageL6 = new System.Windows.Forms.TabPage();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,17 +64,26 @@
             this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem11 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabPageSummary = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl.SuspendLayout();
             this.tabPageStart.SuspendLayout();
             this.tabPageL4.SuspendLayout();
-            this.tabPageL5.SuspendLayout();
-            this.tabPageL6.SuspendLayout();
             this.menuStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tabPageL5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            this.tabPageL6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.menuStrip2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -92,10 +93,10 @@
             this.tabControl.Controls.Add(this.tabPageL5);
             this.tabControl.Controls.Add(this.tabPageL6);
             this.tabControl.Controls.Add(this.tabPageSummary);
-            this.tabControl.Location = new System.Drawing.Point(12, 12);
+            this.tabControl.Location = new System.Drawing.Point(12, 47);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(768, 458);
+            this.tabControl.Size = new System.Drawing.Size(768, 423);
             this.tabControl.TabIndex = 0;
             // 
             // tabPageStart
@@ -109,6 +110,16 @@
             this.tabPageStart.TabIndex = 0;
             this.tabPageStart.Text = "Start";
             this.tabPageStart.UseVisualStyleBackColor = true;
+            // 
+            // buttonGo
+            // 
+            this.buttonGo.Location = new System.Drawing.Point(598, 355);
+            this.buttonGo.Name = "buttonGo";
+            this.buttonGo.Size = new System.Drawing.Size(75, 23);
+            this.buttonGo.TabIndex = 1;
+            this.buttonGo.Text = "Go";
+            this.buttonGo.UseVisualStyleBackColor = true;
+            this.buttonGo.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
@@ -127,51 +138,11 @@
             this.tabPageL4.Location = new System.Drawing.Point(4, 22);
             this.tabPageL4.Name = "tabPageL4";
             this.tabPageL4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageL4.Size = new System.Drawing.Size(760, 432);
+            this.tabPageL4.Size = new System.Drawing.Size(760, 397);
             this.tabPageL4.TabIndex = 1;
             this.tabPageL4.Text = "Level 4";
             this.tabPageL4.UseVisualStyleBackColor = true;
-            // 
-            // tabPageL5
-            // 
-            this.tabPageL5.Controls.Add(this.dataGridView2);
-            this.tabPageL5.Controls.Add(this.menuStrip1);
-            this.tabPageL5.Location = new System.Drawing.Point(4, 22);
-            this.tabPageL5.Name = "tabPageL5";
-            this.tabPageL5.Size = new System.Drawing.Size(760, 432);
-            this.tabPageL5.TabIndex = 2;
-            this.tabPageL5.Text = "Level 5";
-            this.tabPageL5.UseVisualStyleBackColor = true;
-            // 
-            // tabPageL6
-            // 
-            this.tabPageL6.Controls.Add(this.dataGridView3);
-            this.tabPageL6.Controls.Add(this.menuStrip2);
-            this.tabPageL6.Location = new System.Drawing.Point(4, 22);
-            this.tabPageL6.Name = "tabPageL6";
-            this.tabPageL6.Size = new System.Drawing.Size(760, 432);
-            this.tabPageL6.TabIndex = 3;
-            this.tabPageL6.Text = "Level 6";
-            this.tabPageL6.UseVisualStyleBackColor = true;
-            // 
-            // tabPageSummary
-            // 
-            this.tabPageSummary.Location = new System.Drawing.Point(4, 22);
-            this.tabPageSummary.Name = "tabPageSummary";
-            this.tabPageSummary.Size = new System.Drawing.Size(760, 432);
-            this.tabPageSummary.TabIndex = 4;
-            this.tabPageSummary.Text = "Summary";
-            this.tabPageSummary.UseVisualStyleBackColor = true;
-            // 
-            // buttonGo
-            // 
-            this.buttonGo.Location = new System.Drawing.Point(598, 355);
-            this.buttonGo.Name = "buttonGo";
-            this.buttonGo.Size = new System.Drawing.Size(75, 23);
-            this.buttonGo.TabIndex = 1;
-            this.buttonGo.Text = "Go";
-            this.buttonGo.UseVisualStyleBackColor = true;
-            this.buttonGo.Click += new System.EventHandler(this.button1_Click);
+            this.tabPageL4.Click += new System.EventHandler(this.tabPageL4_Click);
             // 
             // menuStrip
             // 
@@ -201,6 +172,7 @@
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItem2.Text = "New Module";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // toolStripMenuItem3
             // 
@@ -214,55 +186,16 @@
             this.toolStripMenuItem4.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItem4.Text = "Delete Module";
             // 
-            // dataGridView1
+            // tabPageL5
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6});
-            this.dataGridView1.Location = new System.Drawing.Point(6, 39);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(748, 387);
-            this.dataGridView1.TabIndex = 1;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "";
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "";
-            this.Column6.Name = "Column6";
+            this.tabPageL5.Controls.Add(this.dataGridView2);
+            this.tabPageL5.Controls.Add(this.menuStrip1);
+            this.tabPageL5.Location = new System.Drawing.Point(4, 22);
+            this.tabPageL5.Name = "tabPageL5";
+            this.tabPageL5.Size = new System.Drawing.Size(760, 397);
+            this.tabPageL5.TabIndex = 2;
+            this.tabPageL5.Text = "Level 5";
+            this.tabPageL5.UseVisualStyleBackColor = true;
             // 
             // dataGridView2
             // 
@@ -361,6 +294,17 @@
             this.toolStripMenuItem7.Size = new System.Drawing.Size(151, 22);
             this.toolStripMenuItem7.Text = "Delete Module";
             // 
+            // tabPageL6
+            // 
+            this.tabPageL6.Controls.Add(this.dataGridView3);
+            this.tabPageL6.Controls.Add(this.menuStrip2);
+            this.tabPageL6.Location = new System.Drawing.Point(4, 22);
+            this.tabPageL6.Name = "tabPageL6";
+            this.tabPageL6.Size = new System.Drawing.Size(760, 432);
+            this.tabPageL6.TabIndex = 3;
+            this.tabPageL6.Text = "Level 6";
+            this.tabPageL6.UseVisualStyleBackColor = true;
+            // 
             // dataGridView3
             // 
             this.dataGridView3.AllowUserToAddRows = false;
@@ -458,11 +402,87 @@
             this.toolStripMenuItem11.Size = new System.Drawing.Size(151, 22);
             this.toolStripMenuItem11.Text = "Delete Module";
             // 
+            // tabPageSummary
+            // 
+            this.tabPageSummary.Location = new System.Drawing.Point(4, 22);
+            this.tabPageSummary.Name = "tabPageSummary";
+            this.tabPageSummary.Size = new System.Drawing.Size(760, 432);
+            this.tabPageSummary.TabIndex = 4;
+            this.tabPageSummary.Text = "Summary";
+            this.tabPageSummary.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(9, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(767, 35);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Course Name";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn13,
+            this.dataGridViewTextBoxColumn14,
+            this.dataGridViewTextBoxColumn15,
+            this.dataGridViewTextBoxColumn16,
+            this.dataGridViewTextBoxColumn17,
+            this.dataGridViewTextBoxColumn18});
+            this.dataGridView1.Location = new System.Drawing.Point(6, 30);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(748, 387);
+            this.dataGridView1.TabIndex = 4;
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.HeaderText = "";
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            this.dataGridViewTextBoxColumn13.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn14
+            // 
+            this.dataGridViewTextBoxColumn14.HeaderText = "";
+            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
+            this.dataGridViewTextBoxColumn14.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn15
+            // 
+            this.dataGridViewTextBoxColumn15.HeaderText = "";
+            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
+            this.dataGridViewTextBoxColumn15.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn16
+            // 
+            this.dataGridViewTextBoxColumn16.HeaderText = "";
+            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
+            this.dataGridViewTextBoxColumn16.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn17
+            // 
+            this.dataGridViewTextBoxColumn17.HeaderText = "";
+            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
+            this.dataGridViewTextBoxColumn17.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn18
+            // 
+            this.dataGridViewTextBoxColumn18.HeaderText = "";
+            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
+            this.dataGridViewTextBoxColumn18.ReadOnly = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(792, 482);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.tabControl);
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MainForm";
@@ -473,19 +493,19 @@
             this.tabPageStart.PerformLayout();
             this.tabPageL4.ResumeLayout(false);
             this.tabPageL4.PerformLayout();
-            this.tabPageL5.ResumeLayout(false);
-            this.tabPageL5.PerformLayout();
-            this.tabPageL6.ResumeLayout(false);
-            this.tabPageL6.PerformLayout();
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tabPageL5.ResumeLayout(false);
+            this.tabPageL5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.tabPageL6.ResumeLayout(false);
+            this.tabPageL6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -505,13 +525,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -536,5 +549,13 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem9;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem10;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem11;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
     }
 }
