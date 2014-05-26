@@ -18,3 +18,6 @@ C:\Users\Shamal\Documents\Visual Studio 2013\Projects\OOD\OOD\GradePredictor\Gra
 C:\Users\Shamal\Documents\Visual Studio 2013\Projects\OOD\OOD\GradePredictor\GradePredictor\bin\Debug\GradePredictor.exe
 C:\Users\Shamal\Documents\Visual Studio 2013\Projects\OOD\OOD\GradePredictor\GradePredictor\bin\Debug\GradePredictor.pdb
 C:\Users\Shamal\Documents\Visual Studio 2013\Projects\OOD\OOD\GradePredictor\GradePredictor\bin\Debug\System.Data.SQLite.xml
+C:\Users\Shamal\Documents\Visual Studio 2013\Projects\OOD\OOD\GradePredictor\GradePredictor\obj\Debug\GradePredictor.Views.ModuleForm.resources
+C:\Users\Shamal\Documents\Visual Studio 2013\Projects\OOD\OOD\GradePredictor\GradePredictor\obj\Debug\GradePredictor.Views.RegisterCourse.resources
+C:\Users\Shamal\Documents\Visual Studio 2013\Projects\OOD\OOD\GradePredictor\GradePredictor\obj\Debug\GradePredictor.Views.SignIn.resources

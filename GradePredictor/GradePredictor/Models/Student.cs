@@ -32,7 +32,7 @@ namespace GradePredictor.Models
             #region Initializes the levels
             Levels = new Level[3];
 
-            for (int i = 4; i < 7; i++)
+            for (int i = 0; i < 3; i++)
             {
                 Levels[i] = new Level();
             }

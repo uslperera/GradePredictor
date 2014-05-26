@@ -7,42 +7,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using GradePredictor.Models;
 namespace GradePredictor.Views
 {
     public partial class MainForm : Form
     {
-        public MainForm()
+        private Student student;
+        public MainForm(Student student)
         {
             InitializeComponent();
-            tableLayoutPanel1.RowCount = 8;
+
+            this.student = student;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonGo_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void tabPageL4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
+            new RegisterCourse(student,labelCName).ShowDialog();
 
         }
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            Label my = new Label();
-            my.Text = "AD";
-            tableLayoutPanel1.Controls.Add(my,0,0);
-
-            TextBox te = new TextBox();
-            
-            tableLayoutPanel1.Controls.Add(te, 1, 0);
+            dataGridView1.Rows.Add(1);
         }
 
+        private void toolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+            //dataGridView2.Rows.Add(1);
+        }
+
+       
     }
 }

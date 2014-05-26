@@ -86,7 +86,7 @@ namespace GradePredictor.Models
             return assessments;
         }
 
-        public bool Equals(Object obj)
+        public bool Equals(object obj)
         {
             Assessment assessment = obj as Assessment;
             if (assessment.Type == this.Type)
