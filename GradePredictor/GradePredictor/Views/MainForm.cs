@@ -175,7 +175,8 @@ namespace GradePredictor.Views
                     }
                 }
             }
-
+            Console.WriteLine("mod count5: " + moduleCountL5);
+            Console.WriteLine("mod count6: " + moduleCountL6);
             return new Tuple<int, int>((totalMarksL6 / moduleCountL6) * 100, (totalMarksL5 / moduleCountL5) * 100);
         }
 
@@ -386,20 +387,132 @@ namespace GradePredictor.Views
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             UpdateTotal(e.RowIndex, e.ColumnIndex, dataGridView1);
+            double avg = calculateAvg(0);
+            label2.Text = "Average: " + avg;
         }
 
         private void dataGridView2_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             UpdateTotal(e.RowIndex, e.ColumnIndex, dataGridView2);
+            double avg = calculateAvg(1);
+            label3.Text = "Average: " + avg;
         }
 
         private void dataGridView3_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             UpdateTotal(e.RowIndex, e.ColumnIndex, dataGridView3);
+            double avg = calculateAvg(2);
+            label4.Text = "Average: " + avg;
+        }
+
+        private void tabControl_MouseClick(object sender, MouseEventArgs e)
+        {
+            int selectedIndex = tabControl.SelectedIndex;
+            if (selectedIndex == 4) {
+                updateSummeryGrid(dataGridView4);
+                Console.WriteLine(CalculateAward());
+            }
+        }
+
+        //update summery info
+        private void updateSummeryGrid(DataGridView dgv) { 
+            //calculate level 4 credits
+            int level4 = getCalculatedCredits(0);
+
+            //calculate level 5 credits
+            int level5 = getCalculatedCredits(1);
+
+            //calculate level 6 credits
+            int level6 = getCalculatedCredits(2);
+
+            //add to the grid view
+            
+            dgv.Rows[0].SetValues("Level 4", "" + level4);
+
+           
+            dgv.Rows[1].SetValues("Level 5", "" + level5);
+
+            
+            dgv.Rows[2].SetValues("Level 6", "" + level6);
+        }
+
+        //get module credits
+        private int getCalculatedCredits(int level) {
+            int modCredits = 0;
+            //get all module list
+            List<Module> listMod = student.Levels[level].Modules;
+
+            
+
+            //iterate over modules
+            for (int i = 0; i < listMod.Count; i++)
+            {
+                Module mod = listMod.ElementAt(i);
+
+                //get current module credits
+                int credits = mod.Credits;                
+
+                //get all assinment list
+                List<Assessment> listAss = listMod.ElementAt(i).Assessments;
+
+                //iterate over assinments
+                int counter = 0;
+                for (int j = 0; j < listAss.Count; j++)
+                {
+                    //current assinment
+                    Assessment ass = listAss.ElementAt(j);
+
+                    //check marks for assinemnt credits
+                    if (ass.Mark == 0) {
+                        continue;
+                    }
+                    counter++;
+                }
+
+                //if any assenment is not fails
+                if (counter == listAss.Count) {
+                    if (mod.Total > 30)
+                    {
+                        modCredits += credits;
+                    }
+                    if (mod.Total <= 30)
+                    {
+                        modCredits += 0;
+                    }
+                }
+
+            }
+
+            return modCredits;
+        }
+
+
+        //calculate average
+        private double calculateAvg(int level) {
+            //get all module list
+            List<Module> listMod = student.Levels[level].Modules;
+
+            //total module marks and avarage
+            int totalModMarks = 0;
+            double avg = 0;
+
+            //calculate total
+            for (int i = 0; i < listMod.Count; i++)
+            {
+                totalModMarks += listMod.ElementAt(i).Total;
+
+            }
+
+            //calculate average
+            avg = double.Parse(""+totalModMarks) / listMod.Count;
+
+            return avg;
+        
         }
 
         
-
     }
+
+    
 
 }

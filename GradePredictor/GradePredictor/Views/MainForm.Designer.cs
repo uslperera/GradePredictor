@@ -84,10 +84,13 @@
             this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem11 = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPageSummary = new System.Windows.Forms.TabPage();
-            this.labelCName = new System.Windows.Forms.Label();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelCName = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.tabPageStart.SuspendLayout();
             this.tabPageL4.SuspendLayout();
@@ -115,6 +118,7 @@
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(768, 423);
             this.tabControl.TabIndex = 0;
+            this.tabControl.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tabControl_MouseClick);
             // 
             // tabPageStart
             // 
@@ -150,6 +154,7 @@
             // 
             // tabPageL4
             // 
+            this.tabPageL4.Controls.Add(this.label2);
             this.tabPageL4.Controls.Add(this.dataGridView1);
             this.tabPageL4.Controls.Add(this.menuStrip);
             this.tabPageL4.Location = new System.Drawing.Point(4, 22);
@@ -284,6 +289,7 @@
             // 
             // tabPageL5
             // 
+            this.tabPageL5.Controls.Add(this.label3);
             this.tabPageL5.Controls.Add(this.dataGridView2);
             this.tabPageL5.Controls.Add(this.menuStrip1);
             this.tabPageL5.Location = new System.Drawing.Point(4, 22);
@@ -416,6 +422,7 @@
             // 
             // tabPageL6
             // 
+            this.tabPageL6.Controls.Add(this.label4);
             this.tabPageL6.Controls.Add(this.dataGridView3);
             this.tabPageL6.Controls.Add(this.menuStrip2);
             this.tabPageL6.Location = new System.Drawing.Point(4, 22);
@@ -446,6 +453,7 @@
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.Size = new System.Drawing.Size(748, 363);
             this.dataGridView3.TabIndex = 3;
+            this.dataGridView3.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellEndEdit);
             // 
             // dataGridViewTextBoxColumn7
             // 
@@ -555,16 +563,6 @@
             this.tabPageSummary.Text = "Summary";
             this.tabPageSummary.UseVisualStyleBackColor = true;
             // 
-            // labelCName
-            // 
-            this.labelCName.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCName.Location = new System.Drawing.Point(9, 9);
-            this.labelCName.Name = "labelCName";
-            this.labelCName.Size = new System.Drawing.Size(767, 35);
-            this.labelCName.TabIndex = 1;
-            this.labelCName.Text = "Course Name";
-            this.labelCName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // dataGridView4
             // 
             this.dataGridView4.AllowUserToAddRows = false;
@@ -591,6 +589,43 @@
             this.Column12.HeaderText = "Credits";
             this.Column12.Name = "Column12";
             this.Column12.ReadOnly = true;
+            // 
+            // labelCName
+            // 
+            this.labelCName.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCName.Location = new System.Drawing.Point(9, 9);
+            this.labelCName.Name = "labelCName";
+            this.labelCName.Size = new System.Drawing.Size(767, 35);
+            this.labelCName.TabIndex = 1;
+            this.labelCName.Text = "Course Name";
+            this.labelCName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(362, 3);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(10, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = " ";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(362, 5);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(10, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = " ";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(364, 5);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(10, 13);
+            this.label4.TabIndex = 4;
+            this.label4.Text = " ";
             // 
             // MainForm
             // 
@@ -690,5 +725,8 @@
         private System.Windows.Forms.DataGridView dataGridView4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }

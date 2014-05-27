@@ -60,3 +60,16 @@ D:\Documents\OOD\OOD\GradePredictor\GradePredictor\obj\Debug\GradePredictor.View
 D:\Documents\OOD\OOD\GradePredictor\GradePredictor\obj\Debug\GradePredictor.Views.RegisterCourse.resources
 D:\Documents\OOD\OOD\GradePredictor\GradePredictor\obj\Debug\GradePredictor.Views.SignIn.resources
 D:\Documents\OOD\OOD\GradePredictor\GradePredictor\obj\Debug\GradePredictor.csproj.GenerateResource.Cache
+C:\Users\Toshiba\Documents\Visual Studio 2012\Commits\v3\OOD\GradePredictor\GradePredictor\bin\Debug\GradePredictor.exe.config
+C:\Users\Toshiba\Documents\Visual Studio 2012\Commits\v3\OOD\GradePredictor\GradePredictor\obj\Debug\GradePredictor.exe
+C:\Users\Toshiba\Documents\Visual Studio 2012\Commits\v3\OOD\GradePredictor\GradePredictor\obj\Debug\GradePredictor.pdb
+C:\Users\Toshiba\Documents\Visual Studio 2012\Commits\v3\OOD\GradePredictor\GradePredictor\bin\Debug\GradePredictor.exe
+C:\Users\Toshiba\Documents\Visual Studio 2012\Commits\v3\OOD\GradePredictor\GradePredictor\bin\Debug\GradePredictor.pdb
+C:\Users\Toshiba\Documents\Visual Studio 2012\Commits\v3\OOD\GradePredictor\GradePredictor\bin\Debug\System.Data.SQLite.xml
+C:\Users\Toshiba\Documents\Visual Studio 2012\Commits\v3\OOD\GradePredictor\GradePredictor\obj\Debug\GradePredictor.csprojResolveAssemblyReference.cache
+C:\Users\Toshiba\Documents\Visual Studio 2012\Commits\v3\OOD\GradePredictor\GradePredictor\obj\Debug\GradePredictor.Properties.Resources.resources
+C:\Users\Toshiba\Documents\Visual Studio 2012\Commits\v3\OOD\GradePredictor\GradePredictor\obj\Debug\GradePredictor.Views.MainForm.resources
+C:\Users\Toshiba\Documents\Visual Studio 2012\Commits\v3\OOD\GradePredictor\GradePredictor\obj\Debug\GradePredictor.Views.ModuleForm.resources
+C:\Users\Toshiba\Documents\Visual Studio 2012\Commits\v3\OOD\GradePredictor\GradePredictor\obj\Debug\GradePredictor.Views.RegisterCourse.resources
+C:\Users\Toshiba\Documents\Visual Studio 2012\Commits\v3\OOD\GradePredictor\GradePredictor\obj\Debug\GradePredictor.Views.SignIn.resources
+C:\Users\Toshiba\Documents\Visual Studio 2012\Commits\v3\OOD\GradePredictor\GradePredictor\obj\Debug\GradePredictor.csproj.GenerateResource.Cache
