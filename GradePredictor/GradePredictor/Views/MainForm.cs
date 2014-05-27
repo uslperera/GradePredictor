@@ -28,7 +28,7 @@ namespace GradePredictor.Views
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            new ModuleForm(student).ShowDialog();
+            new ModuleForm(student, student.Levels[0].Name).ShowDialog();
             dataGridView1.Rows.Add(1);
         }
 
