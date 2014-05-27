@@ -28,12 +28,18 @@ namespace GradePredictor.Views
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
+            new ModuleForm(student).ShowDialog();
             dataGridView1.Rows.Add(1);
         }
 
         private void toolStripMenuItem5_Click(object sender, EventArgs e)
         {
             //dataGridView2.Rows.Add(1);
+        }
+
+        private void labelCName_Click(object sender, EventArgs e)
+        {
+
         }
 
        

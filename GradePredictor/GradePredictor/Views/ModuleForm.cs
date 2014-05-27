@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GradePredictor.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,26 @@ namespace GradePredictor.Views
 {
     public partial class ModuleForm : Form
     {
-        public ModuleForm()
+
+        private Student student;
+        public ModuleForm(Student st)
         {
             InitializeComponent();
+            this.student = st;
+        }
+
+        private void ModuleForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            Module module = new Module();
+            module.Code = textBoxMCode.Text;
+            module.Name = textBoxMName.Text;
+            module.Credits = Int32.Parse(textBoxCredits.Text);
+
         }
     }
 }
