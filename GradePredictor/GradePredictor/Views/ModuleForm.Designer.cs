@@ -33,7 +33,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxMName = new System.Windows.Forms.TextBox();
-            this.textBoxCredits = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonDelete = new System.Windows.Forms.Button();
@@ -41,8 +40,9 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
-            this.AssesmentType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Weight = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comboBoxCredit = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -88,18 +88,11 @@
             this.textBoxMName.Size = new System.Drawing.Size(178, 20);
             this.textBoxMName.TabIndex = 4;
             // 
-            // textBoxCredits
-            // 
-            this.textBoxCredits.Location = new System.Drawing.Point(153, 109);
-            this.textBoxCredits.Name = "textBoxCredits";
-            this.textBoxCredits.Size = new System.Drawing.Size(178, 20);
-            this.textBoxCredits.TabIndex = 5;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(40, 147);
+            this.label4.Location = new System.Drawing.Point(40, 153);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(145, 16);
             this.label4.TabIndex = 6;
@@ -107,17 +100,18 @@
             // 
             // panel1
             // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.buttonDelete);
             this.panel1.Controls.Add(this.buttonAdd);
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Location = new System.Drawing.Point(27, 176);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(334, 127);
+            this.panel1.Size = new System.Drawing.Size(334, 134);
             this.panel1.TabIndex = 7;
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(241, 12);
+            this.buttonDelete.Location = new System.Drawing.Point(241, 6);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(75, 23);
             this.buttonDelete.TabIndex = 8;
@@ -127,7 +121,7 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(160, 12);
+            this.buttonAdd.Location = new System.Drawing.Point(160, 6);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(75, 23);
             this.buttonAdd.TabIndex = 1;
@@ -139,28 +133,29 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.AssesmentType,
-            this.Weight});
-            this.dataGridView1.Location = new System.Drawing.Point(16, 41);
+            this.Column1,
+            this.Column2});
+            this.dataGridView1.Location = new System.Drawing.Point(16, 35);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(299, 79);
+            this.dataGridView1.Size = new System.Drawing.Size(299, 94);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(268, 309);
+            this.buttonCancel.Location = new System.Drawing.Point(268, 316);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 8;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(187, 309);
+            this.buttonSave.Location = new System.Drawing.Point(187, 316);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
             this.buttonSave.TabIndex = 9;
@@ -168,26 +163,42 @@
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
-            // AssesmentType
+            // Column1
             // 
-            this.AssesmentType.HeaderText = "Assesment Type";
-            this.AssesmentType.Name = "AssesmentType";
+            this.Column1.HeaderText = "Assessment Type";
+            this.Column1.Items.AddRange(new object[] {
+            "ICT",
+            "Coursework"});
+            this.Column1.Name = "Column1";
+            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
-            // Weight
+            // Column2
             // 
-            this.Weight.HeaderText = "Weight";
-            this.Weight.Name = "Weight";
+            this.Column2.HeaderText = "Weight";
+            this.Column2.Name = "Column2";
+            // 
+            // comboBoxCredit
+            // 
+            this.comboBoxCredit.FormattingEnabled = true;
+            this.comboBoxCredit.Items.AddRange(new object[] {
+            "15",
+            "30"});
+            this.comboBoxCredit.Location = new System.Drawing.Point(153, 109);
+            this.comboBoxCredit.Name = "comboBoxCredit";
+            this.comboBoxCredit.Size = new System.Drawing.Size(178, 21);
+            this.comboBoxCredit.TabIndex = 10;
             // 
             // ModuleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(392, 347);
+            this.Controls.Add(this.comboBoxCredit);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBoxCredits);
             this.Controls.Add(this.textBoxMName);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -210,7 +221,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxMName;
-        private System.Windows.Forms.TextBox textBoxCredits;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button buttonDelete;
@@ -218,7 +228,8 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonSave;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AssesmentType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Weight;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.ComboBox comboBoxCredit;
     }
 }

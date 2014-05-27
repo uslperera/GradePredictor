@@ -11,7 +11,7 @@ namespace GradePredictor.Models
     /// <author> Shamal Perera </author>
     /// <datecreated>18-05-2014</datecreated>
     /// <summary>Entity Class</summary>
-    public class Module
+    public class Module:IComparable
     {
         #region Entity CONSTANTS
 
@@ -27,6 +27,18 @@ namespace GradePredictor.Models
         public string Name { get; set; }
         public int Credits { get; set; }
         public List<Assessment> Assessments { get; set; }
+        public int Total { get; set; }
+
+        public int CompareTo(object obj)
+        {
+            if (obj == null) return 1;
+
+            Module module = obj as Module;
+            if (module != null)
+                return this.Total.CompareTo(module.Total);
+            else
+                throw new ArgumentException("Object is not a Module");
+        }
 
 
         /// <summary>

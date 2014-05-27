@@ -30,10 +30,5 @@ namespace GradePredictor.Views
             this.Hide();
         }
 
-        private void RegisterCourse_Load(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }

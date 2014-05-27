@@ -25,7 +25,7 @@ namespace GradePredictor.Models
         #endregion
 
         public int AID { get; set; }
-        public AssessmentType Type { get; set; }
+        public string Type { get; set; }
         public int Weight { get; set; }
         public int Mark { get; set; }
 
@@ -75,7 +75,7 @@ namespace GradePredictor.Models
             {
                 Assessment assessment = new Assessment();
                 assessment.AID = int.Parse(reader[0].ToString());
-                assessment.Type = (AssessmentType)reader[3];
+                assessment.Type = reader[3].ToString();
                 assessment.Weight = int.Parse(reader[4].ToString());
                 assessment.Mark = int.Parse(reader[5].ToString());
 
@@ -103,9 +103,6 @@ namespace GradePredictor.Models
         }
     }
 
-    public enum AssessmentType
-    {
-        ICT, Coursework
-    }
+
 }
 //__________________________________END__________________________________\\

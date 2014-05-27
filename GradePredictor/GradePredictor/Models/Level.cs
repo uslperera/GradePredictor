@@ -15,7 +15,12 @@ namespace GradePredictor.Models
         public LevelType Name { get; set; }
         public int Credits { get; set; }
         public List<Module> Modules { get; set; }
+        public int Total { get; set; }
 
+        public Level()
+        {
+            Modules = new List<Module>();
+        }
     }
 
     public enum LevelType
