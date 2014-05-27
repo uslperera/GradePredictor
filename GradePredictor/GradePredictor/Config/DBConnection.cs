@@ -99,7 +99,7 @@ namespace GradePredictor.Config
         /// <summary>
         /// Drop all the tables
         /// </summary>
-        private static void DropTables()
+        public static void DropTables()
         {
 
             #region Delete Assessment Table

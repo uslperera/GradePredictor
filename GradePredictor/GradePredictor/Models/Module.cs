@@ -49,7 +49,7 @@ namespace GradePredictor.Models
         public static void Set(Module module, int studentID, LevelType level)
         {
             string sql = "INSERT INTO " + Module.TABLE + " VALUES (" + studentID + ",'" + module.Code + "','"
-                            + module.Name + "'," + module.Credits + "," + level + ")";
+                            + module.Name + "'," + module.Credits + "," + (int)level + ")";
 
             DBConnection.Set(sql);
 
@@ -100,7 +100,7 @@ namespace GradePredictor.Models
             List<Module> modules = new List<Module>();
 
             string sql = "SELECT * FROM " + Module.TABLE + " WHERE " + Student.STUDENT_ID + "=" + studentID + " AND "
-                + Module.LEVEL + "=" + level;
+                + Module.LEVEL + "=" + (int)level;
 
             SQLiteDataReader reader = DBConnection.Get(sql);
 

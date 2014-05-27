@@ -38,7 +38,7 @@ namespace GradePredictor.Models
 
             Levels[0].Name = LevelType.Level4;
             Levels[1].Name = LevelType.Level5;
-            Levels[2].Name = LevelType.Level5;
+            Levels[2].Name = LevelType.Level6;
             #endregion
         }
 

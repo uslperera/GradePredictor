@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using GradePredictor.Models;
+using GradePredictor.Config;
 
 namespace GradePredictor.Views
 {
@@ -17,6 +18,7 @@ namespace GradePredictor.Views
     {
         public SignIn()
         {
+            DBConnection.Connect();
             InitializeComponent();
         }
 
@@ -31,12 +33,24 @@ namespace GradePredictor.Views
             //Presence check
             if(textBoxStudentID.Text.Length>0 & textBoxStudentName.Text.Length>0)
             {
-                //Creates a new student
-                Student student = new Student();
-                student.StudentID = int.Parse(textBoxStudentID.Text);
-                student.StudentName = textBoxStudentName.Text;
-                //Pass the student
-                new MainForm(student).Show();
+                Student student = Student.Get(int.Parse(textBoxStudentID.Text));
+                if (student == null)
+                {
+                    //Creates a new student
+                    student = new Student();
+                    student.StudentID = int.Parse(textBoxStudentID.Text);
+                    student.StudentName = textBoxStudentName.Text;
+                    //Pass the student
+                }else
+                {
+                    student.StudentName = textBoxStudentName.Text;
+
+                }
+                MainForm mainForm = new MainForm(student);
+                mainForm.LoadModules(LevelType.Level4);
+                mainForm.LoadModules(LevelType.Level5);
+                mainForm.LoadModules(LevelType.Level6);
+                mainForm.Show();
 
                 this.Hide();
             }

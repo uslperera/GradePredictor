@@ -110,6 +110,7 @@ namespace GradePredictor.Views
                 for (int i = 0; i < dataGridView1.RowCount; i++)
                 {
                     Assessment asm = new Assessment();
+                    asm.AID=i+1;
                     //Set details of the assessment
                     asm.Type = dataGridView1.Rows[i].Cells[0].Value.ToString();
                     try
