@@ -60,7 +60,28 @@ namespace GradePredictor.Views
 
         private void toolStripMenuItem5_Click(object sender, EventArgs e)
         {
-            //dataGridView2.Rows.Add(1);
+            try
+            {
+                ModuleForm moduleForm = new ModuleForm(student, LevelType.Level5, this);
+                moduleForm.ShowDialog();
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                MessageBox.Show("Select a row to edit details");
+            }
+        }
+
+        private void toolStripMenuItem9_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ModuleForm moduleForm = new ModuleForm(student, LevelType.Level6, this);
+                moduleForm.ShowDialog();
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                MessageBox.Show("Select a row to edit details");
+            }
         }
 
         private string CalculateAward()
@@ -252,6 +273,125 @@ namespace GradePredictor.Views
             }
             
         }
+
+        
+        //calculate and update the total
+        private void UpdateTotal(int rowIndex, int colIndex, DataGridView dgv)
+        {
+            int level = 0;
+            string[] modRow = GetRowInfo(rowIndex, dgv);
+            double total = 0;
+
+            //level selection
+            if (dgv == dataGridView1)
+            {
+                level = 0;
+            }
+
+            if (dgv == dataGridView2)
+            {
+                level = 1;
+            }
+
+            if (dgv == dataGridView3)
+            {
+                level = 2;
+            }
+
+            //module selection
+            Module cuMod = student.Levels[level].Modules[rowIndex];
+
+            //assesment count
+            int assCount = cuMod.Assessments.Count;
+
+            //total calculation
+            for (int i = 0; i < assCount; i++)
+            {
+                double weight = cuMod.Assessments.ElementAt(i).Weight;
+                double mark = double.Parse(modRow[colIndex]);
+
+                //get mark from ass 1
+                if (i == 0)
+                {
+                    mark = double.Parse(modRow[2]);
+                }
+
+                //get mark from ass 2
+                if (i == 1)
+                {
+                    mark = double.Parse(modRow[4]);
+                }
+
+                //get mark from ass 3
+                if (i == 2)
+                {
+                    mark = double.Parse(modRow[6]);
+                }
+
+
+                total += (mark * (weight * 0.01));
+
+                //modRow[9] = ""+total;
+            }
+
+            //update table row
+            dgv[9, rowIndex].Value = total;
+
+            //update edited column according to column index
+            switch(colIndex){
+                case 2:
+                    cuMod.Assessments.ElementAt(0).Mark = int.Parse(modRow[colIndex]);
+                    break;
+
+                case 4:
+                    cuMod.Assessments.ElementAt(1).Mark = int.Parse(modRow[colIndex]);
+                    break;
+
+                case 6:
+                    cuMod.Assessments.ElementAt(2).Mark = int.Parse(modRow[colIndex]);
+                    break;
+            }
+
+            //update modules total
+            cuMod.Total = int.Parse(total.ToString());
+
+            //update the module with new updated marks and total
+            student.Levels[level].Modules[rowIndex] = cuMod;
+
+        }
+
+        //get all row info
+        private string[] GetRowInfo(int rowIndex, DataGridView dgv)
+        {
+            string[] modRow = new string[10];
+            for (int i = 0; i < 10; i++)
+            {
+                string s = "0" + dgv.Rows[rowIndex].Cells[i].Value;
+                modRow[i] = s;
+
+            }
+
+            return modRow;
+        }
+       
+
+        //on cell edit event
+        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            UpdateTotal(e.RowIndex, e.ColumnIndex, dataGridView1);
+        }
+
+        private void dataGridView2_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            UpdateTotal(e.RowIndex, e.ColumnIndex, dataGridView2);
+        }
+
+        private void dataGridView3_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            UpdateTotal(e.RowIndex, e.ColumnIndex, dataGridView3);
+        }
+
+        
 
     }
 
