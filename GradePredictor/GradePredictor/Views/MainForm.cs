@@ -175,7 +175,7 @@ namespace GradePredictor.Views
 
         private void AddToDataGrid(DataGridView grid,List<Module> modules)
         {
-            dataGridView1.RowCount = 0;
+            dataGridView1.RowCount = 0 ;
             foreach(Module module in modules)
             {
                 int index = grid.Rows.Add(1);
