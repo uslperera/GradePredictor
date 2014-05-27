@@ -29,10 +29,16 @@ namespace GradePredictor.Views
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             Module module = new Module();
-            module.Code = textBoxMCode.Text;
-            module.Name = textBoxMName.Text;
-            module.Credits = Int32.Parse(textBoxCredits.Text);
-
+            if (textBoxMCode.Text.Equals("") || textBoxMName.Text.Equals("") || textBoxCredits.Text.Equals(""))
+            {
+                MessageBox.Show("One or more fields are empty");
+            }
+            else
+            {
+                module.Code = textBoxMCode.Text;
+                module.Name = textBoxMName.Text;
+                module.Credits = Int32.Parse(textBoxCredits.Text);
+            }
         }
     }
 }
