@@ -85,6 +85,9 @@
             this.toolStripMenuItem11 = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPageSummary = new System.Windows.Forms.TabPage();
             this.labelCName = new System.Windows.Forms.Label();
+            this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl.SuspendLayout();
             this.tabPageStart.SuspendLayout();
             this.tabPageL4.SuspendLayout();
@@ -96,6 +99,8 @@
             this.tabPageL6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.menuStrip2.SuspendLayout();
+            this.tabPageSummary.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -441,7 +446,6 @@
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.Size = new System.Drawing.Size(748, 363);
             this.dataGridView3.TabIndex = 3;
-            this.dataGridView3.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellEndEdit);
             // 
             // dataGridViewTextBoxColumn7
             // 
@@ -543,6 +547,7 @@
             // 
             // tabPageSummary
             // 
+            this.tabPageSummary.Controls.Add(this.dataGridView4);
             this.tabPageSummary.Location = new System.Drawing.Point(4, 22);
             this.tabPageSummary.Name = "tabPageSummary";
             this.tabPageSummary.Size = new System.Drawing.Size(760, 397);
@@ -559,6 +564,33 @@
             this.labelCName.TabIndex = 1;
             this.labelCName.Text = "Course Name";
             this.labelCName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // dataGridView4
+            // 
+            this.dataGridView4.AllowUserToAddRows = false;
+            this.dataGridView4.AllowUserToDeleteRows = false;
+            this.dataGridView4.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView4.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column11,
+            this.Column12});
+            this.dataGridView4.Location = new System.Drawing.Point(3, 11);
+            this.dataGridView4.Name = "dataGridView4";
+            this.dataGridView4.ReadOnly = true;
+            this.dataGridView4.Size = new System.Drawing.Size(754, 375);
+            this.dataGridView4.TabIndex = 1;
+            // 
+            // Column11
+            // 
+            this.Column11.HeaderText = "Level";
+            this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "Credits";
+            this.Column12.Name = "Column12";
+            this.Column12.ReadOnly = true;
             // 
             // MainForm
             // 
@@ -590,6 +622,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
+            this.tabPageSummary.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -653,5 +687,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridView4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
     }
 }

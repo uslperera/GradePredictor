@@ -18,7 +18,13 @@ namespace GradePredictor.Views
             InitializeComponent();
 
             this.student = student;
- 
+            for (int i = 4; i < 7; i++)
+            {
+                int index = dataGridView4.Rows.Add(1);
+                dataGridView4.Rows[index].Cells[0].Value = "Level " + i;
+            }
+            int graderow = dataGridView4.Rows.Add(1);
+            dataGridView4.Rows[graderow].Cells[0].Value = "Final Grade";
         }
 
         private void buttonGo_Click(object sender, EventArgs e)
