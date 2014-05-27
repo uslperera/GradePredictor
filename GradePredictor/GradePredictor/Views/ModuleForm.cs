@@ -69,6 +69,10 @@ namespace GradePredictor.Views
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
+            if(dataGridView1.RowCount==4)
+            {
+                return;
+            }
             //Add a new row
             dataGridView1.Rows.Add(1);
         }

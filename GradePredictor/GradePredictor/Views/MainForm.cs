@@ -8,8 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using GradePredictor.Models;
+using GradePredictor.Config;
+using System.Threading;
+
+
 namespace GradePredictor.Views
 {
+    /// <datecreated>27-05-2014</datecreated>
+    /// <summary>Main Form</summary>
     public partial class MainForm : Form
     {
         private Student student;
@@ -25,6 +31,8 @@ namespace GradePredictor.Views
             }
             int graderow = dataGridView4.Rows.Add(1);
             dataGridView4.Rows[graderow].Cells[0].Value = "Final Grade";
+
+            labelCName.Text = student.CourseName+"";
         }
 
         private void buttonGo_Click(object sender, EventArgs e)
@@ -35,32 +43,7 @@ namespace GradePredictor.Views
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            /*//dataGridView1.Rows.Add(1);
-            Module mod = new Module();
-            mod.Code = "ECSC";
-            mod.Name = "OOD";
-            mod.Credits = 15;
-            Assessment a1 = new Assessment();
-            a1.Type = "Coursework";
-            a1.Weight = 30;
-
-            Assessment a2 = new Assessment();
-            a2.Type = "ICT";
-            a2.Weight = 30;
-
-            Assessment a3 = new Assessment();
-            a3.Type = "Coursework";
-            a3.Weight = 40;
-
-            mod.Assessments = new List<Assessment>();
-
-            mod.Assessments.Add(a1);
-            mod.Assessments.Add(a2);
-            mod.Assessments.Add(a3);
-
-            AddModule(mod,LevelType.Level4);*/
-
-            ModuleForm moduleForm = new ModuleForm(student,LevelType.Level4,this);
+            ModuleForm moduleForm = new ModuleForm(student, LevelType.Level4, this);
             moduleForm.ShowDialog();
         }
 
@@ -111,161 +94,149 @@ namespace GradePredictor.Views
 
         private Tuple<int, int> CalcAverage()
         {
-            List<Module> level5 = student.Levels[1].Modules.GetRange(0, student.Levels[1].Modules.Count);
-            List<Module> level6 = student.Levels[2].Modules.GetRange(0, student.Levels[2].Modules.Count); ;
-
-            level5.Sort();
-            level6.Sort();
-
-            int totalCreditsL5 = 0;
-            int moduleCountL5 = 0;
-            int totalMarksL5 = 0;
-
-            int totalCreditsL6 = 0;
-            int moduleCountL6 = 0;
-            int totalMarksL6 = 0;
-
-            foreach (Module module in level6)
+            try
             {
-                if (module.Credits == 30 & totalCreditsL6 + 30 <= 105)
-                {
-                    totalCreditsL6 += 30;
-                    totalMarksL6 += module.Total;
-                    moduleCountL6++;
-                }
-            }
+                //Create a copy of the two lists
+                List<Module> level5 = student.Levels[1].Modules.GetRange(0, student.Levels[1].Modules.Count);
+                List<Module> level6 = student.Levels[2].Modules.GetRange(0, student.Levels[2].Modules.Count);
 
-            foreach (Module module in level6)
-            {
-                if (module.Credits == 15 & totalCreditsL6 + 15 <= 105)
+                //Sort the two modules lists
+                level5.Sort();
+                level6.Sort();
+
+                int totalCreditsL5 = 0;
+                int moduleCountL5 = 0;
+                int totalMarksL5 = 0;
+
+                int totalCreditsL6 = 0;
+                int moduleCountL6 = 0;
+                int totalMarksL6 = 0;
+
+                //First find the 30 credit modules in level 6
+                foreach (Module module in level6)
                 {
-                    totalCreditsL6 += 15;
-                    totalMarksL6 += module.Total;
-                    moduleCountL6++;
-                }
-                else
-                {
-                    foreach (Module mod in level5)
+                    if (module.Credits == 30 & totalCreditsL6 + 30 <= 105)
                     {
-                        if (mod.Credits == 30 & totalCreditsL5 + 30 <= 105)
-                        {
-                            totalCreditsL5 += 30;
-                            totalMarksL5 += mod.Total;
-                            moduleCountL5++;
-                        }
+                        totalCreditsL6 += 30;
+                        totalMarksL6 += module.Total;
+                        moduleCountL6++;
                     }
-                    bool markL6Added = false;
-                    foreach (Module mod in level5)
+                }
+                //Next add up the best 15 credit modules in level 6
+                foreach (Module module in level6)
+                {
+                    if (module.Credits == 15 & totalCreditsL6 + 15 <= 105)
                     {
-                        if (mod.Credits == 15 & totalCreditsL5 + 15 <= 105)
+                        totalCreditsL6 += 15;
+                        totalMarksL6 += module.Total;
+                        moduleCountL6++;
+                    }
+
+                }
+
+                //First find the 30 credit modules in level 5
+                foreach (Module mod in level5)
+                {
+                    if (mod.Credits == 30 & totalCreditsL5 + 30 <= 105)
+                    {
+                        totalCreditsL5 += 30;
+                        totalMarksL5 += mod.Total;
+                        moduleCountL5++;
+                    }
+                }
+
+                //Add the next best 15 credit modules in level 5 and the level 6
+                bool markL6Added = false;
+                Module modul = level6.ElementAt(level6.Capacity - 1);
+                foreach (Module mod in level5)
+                {
+                    if (mod.Credits == 15 & totalCreditsL5 + 15 <= 105)
+                    {
+                        if (!markL6Added && level6.Capacity > 7)
                         {
-                            if (!markL6Added)
+                            if (modul.Total >= mod.Total)
                             {
-                                if (module.Total >= mod.Total)
-                                {
-                                    totalCreditsL5 += 15;
-                                    totalMarksL5 += module.Total;
-                                    moduleCountL5++;
-                                }
+                                totalCreditsL5 += 15;
+                                totalMarksL5 += modul.Total;
+                                moduleCountL5++;
                             }
-                            totalCreditsL5 += 15;
-                            totalMarksL5 += mod.Total;
-                            moduleCountL5++;
                         }
+                        totalCreditsL5 += 15;
+                        totalMarksL5 += mod.Total;
+                        moduleCountL5++;
                     }
                 }
+                // Do the above process until best 105 credits are met
+
+                //return average for level 6 and level 5
+                return new Tuple<int, int>((totalMarksL6 / moduleCountL6), (totalMarksL5 / moduleCountL5));
             }
-            Console.WriteLine("mod count5: " + moduleCountL5);
-            Console.WriteLine("mod count6: " + moduleCountL6);
-            return new Tuple<int, int>((totalMarksL6 / moduleCountL6) * 100, (totalMarksL5 / moduleCountL5) * 100);
+            catch (Exception e)
+            {
+                
+            }
+            return new Tuple<int, int>(0,0);
+           
         }
 
-        private void AddToDataGrid(DataGridView grid,List<Module> modules)
+        /// <summary>
+        /// Add modules to the datagridview
+        /// </summary>
+        /// <param name="grid"></param>
+        /// <param name="modules"></param>
+        private void AddToDataGrid(DataGridView grid, List<Module> modules)
         {
-            grid.RowCount = 0 ;
-            foreach(Module module in modules)
+            //First set row count to 0
+            grid.RowCount = 0;
+            foreach (Module module in modules)
             {
+                //Add module details to the datagridview
                 int index = grid.Rows.Add(1);
-                grid.Rows[index].Cells[0].Value = module.Code + " - " + module.Name + " " + module.Credits+" Credits";
+                grid.Rows[index].Cells[0].Value = module.Code + " - " + module.Name + " " + module.Credits + " Credits";
 
+                double total = 0;
                 int i = 1;
+                //Add assessment details to the datagridview
                 foreach (Assessment asm in module.Assessments)
                 {
-                    grid.Rows[index].Cells[i].Value = asm.Type + " Weight: " + asm.Weight+"%";
+                    grid.Rows[index].Cells[i].Value = asm.Type + " Weight: " + asm.Weight + "%";
                     grid.Rows[index].Cells[i + 1].ReadOnly = false;
-                    grid.Rows[index].Cells[i + 1].Value = asm.Mark+"";
+                    grid.Rows[index].Cells[i + 1].Value = asm.Mark + "";
                     i += 2;
-
+                    total += (asm.Mark * (asm.Weight * 0.01));
+                    module.Total = (int)total;
                 }
                 grid.Rows[index].Cells[9].Value = module.Total;
             }
-            
-        }
 
+        }
+        /// <summary>
+        /// Load modules
+        /// </summary>
+        /// <param name="level"></param>
         public void LoadModules(LevelType level)
         {
             if (level == LevelType.Level4)
             {
-                AddToDataGrid(dataGridView1,student.Levels[0].Modules);
+                AddToDataGrid(dataGridView1, student.Levels[0].Modules);
+                double avg = calculateAvg(0);
+                label2.Text = "Average: " + avg;
             }
             else if (level == LevelType.Level5)
             {
                 AddToDataGrid(dataGridView2, student.Levels[1].Modules);
+                double avg = calculateAvg(1);
+                label3.Text = "Average: " + avg;
             }
             else if (level == LevelType.Level6)
             {
                 AddToDataGrid(dataGridView3, student.Levels[2].Modules);
+                double avg = calculateAvg(2);
+                label4.Text = "Average: " + avg;
             }
-            
+
         }
 
-        public void AddModule(Module module,LevelType level)
-        {
-            if(level==LevelType.Level4)
-            {
-                int index = dataGridView1.Rows.Add(1);
-                dataGridView1.Rows[index].Cells[0].Value = module.Code + " " + module.Name + " " + module.Credits;
-
-                int i = 1;
-                foreach (Assessment asm in module.Assessments)
-                {
-                    dataGridView1.Rows[index].Cells[i].Value = asm.Type + " Weight " + asm.Weight;
-                    dataGridView1.Rows[index].Cells[i + 1].ReadOnly = false;
-                    i += 2;
-
-                }
-
-            }
-            else if (level == LevelType.Level5)
-            {
-                int index = dataGridView2.Rows.Add(1);
-                dataGridView2.Rows[index].Cells[0].Value = module.Code + " " + module.Name + " " + module.Credits;
-
-                int i = 1;
-                foreach (Assessment asm in module.Assessments)
-                {
-                    dataGridView2.Rows[index].Cells[i].Value = asm.Type + " Weight " + asm.Weight;
-                    dataGridView2.Rows[index].Cells[i + 1].ReadOnly = false;
-                    i += 2;
-
-                }
-            }
-            else if (level == LevelType.Level6)
-            {
-                int index = dataGridView3.Rows.Add(1);
-                dataGridView3.Rows[index].Cells[0].Value = module.Code + " " + module.Name + " " + module.Credits;
-
-                int i = 1;
-                foreach (Assessment asm in module.Assessments)
-                {
-                    dataGridView3.Rows[index].Cells[i].Value = asm.Type + " Weight " + asm.Weight;
-                    dataGridView3.Rows[index].Cells[i + 1].ReadOnly = false;
-                    i += 2;
-
-                }
-            }
-            
-        }
 
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
@@ -279,10 +250,10 @@ namespace GradePredictor.Views
             {
                 MessageBox.Show("Select a row to edit details");
             }
-            
+
         }
 
-        
+
         //calculate and update the total
         private void UpdateTotal(int rowIndex, int colIndex, DataGridView dgv)
         {
@@ -344,24 +315,34 @@ namespace GradePredictor.Views
 
             //update table row
             dgv[9, rowIndex].Value = total;
+            try
+            {
+                //update edited column according to column index
+                switch (colIndex)
+                {
+                    case 2:
+                        cuMod.Assessments.ElementAt(0).Mark = int.Parse(modRow[colIndex]);
+                        break;
 
-            //update edited column according to column index
-            switch(colIndex){
-                case 2:
-                    cuMod.Assessments.ElementAt(0).Mark = int.Parse(modRow[colIndex]);
-                    break;
+                    case 4:
+                        cuMod.Assessments.ElementAt(1).Mark = int.Parse(modRow[colIndex]);
+                        break;
 
-                case 4:
-                    cuMod.Assessments.ElementAt(1).Mark = int.Parse(modRow[colIndex]);
-                    break;
+                    case 6:
+                        cuMod.Assessments.ElementAt(2).Mark = int.Parse(modRow[colIndex]);
+                        break;
+                }
 
-                case 6:
-                    cuMod.Assessments.ElementAt(2).Mark = int.Parse(modRow[colIndex]);
-                    break;
+
+                //update modules total
+                cuMod.Total = int.Parse(total.ToString());
+            }
+            catch (Exception ex)
+            {
+
             }
 
-            //update modules total
-            cuMod.Total = int.Parse(total.ToString());
+
 
             //update the module with new updated marks and total
             student.Levels[level].Modules[rowIndex] = cuMod;
@@ -381,7 +362,7 @@ namespace GradePredictor.Views
 
             return modRow;
         }
-       
+
 
         //on cell edit event
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -389,6 +370,7 @@ namespace GradePredictor.Views
             UpdateTotal(e.RowIndex, e.ColumnIndex, dataGridView1);
             double avg = calculateAvg(0);
             label2.Text = "Average: " + avg;
+            Console.WriteLine(avg);
         }
 
         private void dataGridView2_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -408,14 +390,16 @@ namespace GradePredictor.Views
         private void tabControl_MouseClick(object sender, MouseEventArgs e)
         {
             int selectedIndex = tabControl.SelectedIndex;
-            if (selectedIndex == 4) {
+            if (selectedIndex == 4)
+            {
                 updateSummeryGrid(dataGridView4);
                 Console.WriteLine(CalculateAward());
             }
         }
 
         //update summery info
-        private void updateSummeryGrid(DataGridView dgv) { 
+        private void updateSummeryGrid(DataGridView dgv)
+        {
             //calculate level 4 credits
             int level4 = getCalculatedCredits(0);
 
@@ -426,23 +410,29 @@ namespace GradePredictor.Views
             int level6 = getCalculatedCredits(2);
 
             //add to the grid view
-            
+
             dgv.Rows[0].SetValues("Level 4", "" + level4);
 
-           
+
             dgv.Rows[1].SetValues("Level 5", "" + level5);
 
-            
+
             dgv.Rows[2].SetValues("Level 6", "" + level6);
+
+            //Fianl Award calculation
+            string award = CalculateAward();
+
+            dgv.Rows[3].SetValues("Final Grade", "" + award);
         }
 
         //get module credits
-        private int getCalculatedCredits(int level) {
+        private int getCalculatedCredits(int level)
+        {
             int modCredits = 0;
             //get all module list
             List<Module> listMod = student.Levels[level].Modules;
 
-            
+
 
             //iterate over modules
             for (int i = 0; i < listMod.Count; i++)
@@ -450,7 +440,7 @@ namespace GradePredictor.Views
                 Module mod = listMod.ElementAt(i);
 
                 //get current module credits
-                int credits = mod.Credits;                
+                int credits = mod.Credits;
 
                 //get all assinment list
                 List<Assessment> listAss = listMod.ElementAt(i).Assessments;
@@ -463,14 +453,16 @@ namespace GradePredictor.Views
                     Assessment ass = listAss.ElementAt(j);
 
                     //check marks for assinemnt credits
-                    if (ass.Mark == 0) {
+                    if (ass.Mark == 0)
+                    {
                         continue;
                     }
                     counter++;
                 }
 
                 //if any assenment is not fails
-                if (counter == listAss.Count) {
+                if (counter == listAss.Count)
+                {
                     if (mod.Total > 30)
                     {
                         modCredits += credits;
@@ -488,7 +480,8 @@ namespace GradePredictor.Views
 
 
         //calculate average
-        private double calculateAvg(int level) {
+        private double calculateAvg(int level)
+        {
             //get all module list
             List<Module> listMod = student.Levels[level].Modules;
 
@@ -504,15 +497,114 @@ namespace GradePredictor.Views
             }
 
             //calculate average
-            avg = double.Parse(""+totalModMarks) / listMod.Count;
+            avg = double.Parse("" + totalModMarks) / listMod.Count;
 
             return avg;
-        
+
         }
 
-        
+        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int row = dataGridView1.SelectedRows[0].Index;
+                student.Levels[0].Modules.RemoveAt(row);
+                MessageBox.Show("Module deleted");
+                LoadModules(LevelType.Level4);
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                MessageBox.Show("Select a row to edit details");
+            }
+        }
+
+        private void toolStripMenuItem7_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                int row = dataGridView2.SelectedRows[0].Index;
+                student.Levels[1].Modules.RemoveAt(row);
+                MessageBox.Show("Module deleted");
+                LoadModules(LevelType.Level5);
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                MessageBox.Show("Select a row to edit details");
+            }
+        }
+
+        private void toolStripMenuItem11_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int row = dataGridView3.SelectedRows[0].Index;
+                student.Levels[2].Modules.RemoveAt(row);
+                MessageBox.Show("Module deleted");
+                LoadModules(LevelType.Level6);
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                MessageBox.Show("Select a row to edit details");
+            }
+        }
+
+        private void toolStripMenuItem10_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int row = dataGridView3.SelectedRows[0].Index;
+                ModuleForm moduleForm = new ModuleForm(student.Levels[2].Modules.ElementAt(row), LevelType.Level6, this);
+                moduleForm.ShowDialog();
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                MessageBox.Show("Select a row to edit details");
+            }
+        }
+
+        private void toolStripMenuItem6_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int row = dataGridView2.SelectedRows[0].Index;
+                ModuleForm moduleForm = new ModuleForm(student.Levels[1].Modules.ElementAt(row), LevelType.Level5, this);
+                moduleForm.ShowDialog();
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                MessageBox.Show("Select a row to edit details");
+            }
+        }
+
+        private void SaveStudent()
+        {
+            Student.Set(this.student);
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Do you want to save your changes?", "Grade Predictor", MessageBoxButtons.YesNoCancel);
+
+            if (result == DialogResult.Yes)
+            {
+                Thread thread = new Thread(new ThreadStart(SaveStudent));
+                thread.Start();
+
+            }
+            else if (result == DialogResult.No)
+            {
+                e.Cancel = false;
+                DBConnection.Disconnect();
+                this.Dispose();
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                e.Cancel = true;
+            }
+        }
+
     }
 
-    
-
 }
+//__________________________________END__________________________________\\

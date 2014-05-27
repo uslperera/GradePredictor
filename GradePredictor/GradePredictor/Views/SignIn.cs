@@ -46,6 +46,8 @@ namespace GradePredictor.Views
                     student.StudentName = textBoxStudentName.Text;
 
                 }
+                Console.WriteLine("CName: "+student.CourseName);
+
                 MainForm mainForm = new MainForm(student);
                 mainForm.LoadModules(LevelType.Level4);
                 mainForm.LoadModules(LevelType.Level5);

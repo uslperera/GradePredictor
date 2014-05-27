@@ -38,10 +38,10 @@
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.buttonCancel = new System.Windows.Forms.Button();
-            this.buttonSave = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonCancel = new System.Windows.Forms.Button();
+            this.buttonSave = new System.Windows.Forms.Button();
             this.comboBoxCredit = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -143,6 +143,21 @@
             this.dataGridView1.Size = new System.Drawing.Size(299, 94);
             this.dataGridView1.TabIndex = 0;
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Assessment Type";
+            this.Column1.Items.AddRange(new object[] {
+            "ICT",
+            "Coursework"});
+            this.Column1.Name = "Column1";
+            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Weight";
+            this.Column2.Name = "Column2";
+            // 
             // buttonCancel
             // 
             this.buttonCancel.Location = new System.Drawing.Point(268, 316);
@@ -162,21 +177,6 @@
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Assessment Type";
-            this.Column1.Items.AddRange(new object[] {
-            "ICT",
-            "Coursework"});
-            this.Column1.Name = "Column1";
-            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Weight";
-            this.Column2.Name = "Column2";
             // 
             // comboBoxCredit
             // 
@@ -205,6 +205,7 @@
             this.Controls.Add(this.textBoxMCode);
             this.Controls.Add(this.label1);
             this.Name = "ModuleForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Module";
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

@@ -102,7 +102,7 @@
             this.Controls.Add(this.label1);
             this.Name = "SignIn";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SignIn";
+            this.Text = "Sign In";
             this.ResumeLayout(false);
             this.PerformLayout();
 

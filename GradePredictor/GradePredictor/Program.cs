@@ -20,21 +20,13 @@ namespace GradePredictor
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm(new Student()));
+            Application.Run(new SignIn());
 
-            /*
-            Console.WriteLine("Hello");
+            #region Drop Tables
+            /*DBConnection.Connect();
+            DBConnection.DropTables();*/
+            #endregion  
 
-            DBConnection.Connect();
-
-            DBConnection.Set("INSERT INTO " + Student.TABLE + " VALUES (2012017,'Shamal','Software')");
-            SQLiteDataReader reader = DBConnection.Get("SELECT * FROM "+Student.TABLE);
-
-            while(reader.Read())
-            {
-                Console.WriteLine(reader[Student.STUDENT_ID]+" "+reader[Student.STUDENT_NAME]);
-            }*/
-            
         }
     }
 }
