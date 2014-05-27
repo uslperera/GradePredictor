@@ -206,7 +206,6 @@
             this.Controls.Add(this.label1);
             this.Name = "ModuleForm";
             this.Text = "Module";
-            this.Load += new System.EventHandler(this.ModuleForm_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

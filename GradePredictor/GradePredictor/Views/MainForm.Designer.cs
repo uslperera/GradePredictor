@@ -441,6 +441,7 @@
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.Size = new System.Drawing.Size(748, 363);
             this.dataGridView3.TabIndex = 3;
+            this.dataGridView3.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellEndEdit);
             // 
             // dataGridViewTextBoxColumn7
             // 
@@ -504,9 +505,9 @@
             this.menuStrip2.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem8});
-            this.menuStrip2.Location = new System.Drawing.Point(596, 5);
+            this.menuStrip2.Location = new System.Drawing.Point(688, 5);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(161, 24);
+            this.menuStrip2.Size = new System.Drawing.Size(69, 24);
             this.menuStrip2.TabIndex = 2;
             this.menuStrip2.Text = "menuStrip1";
             // 
@@ -524,7 +525,7 @@
             // toolStripMenuItem9
             // 
             this.toolStripMenuItem9.Name = "toolStripMenuItem9";
-            this.toolStripMenuItem9.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem9.Size = new System.Drawing.Size(151, 22);
             this.toolStripMenuItem9.Text = "New Module";
             this.toolStripMenuItem9.Click += new System.EventHandler(this.toolStripMenuItem9_Click);
             // 

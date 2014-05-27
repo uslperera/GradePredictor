@@ -11,6 +11,8 @@ using GradePredictor.Models;
 
 namespace GradePredictor.Views
 {
+    /// <datecreated>27-05-2014</datecreated>
+    /// <summary>Signin Form</summary>
     public partial class RegisterCourse : Form
     {
         private Student student;
@@ -25,10 +27,13 @@ namespace GradePredictor.Views
 
         private void buttonRegister_Click(object sender, EventArgs e)
         {
+            //Set the course
             this.student.CourseName = textBoxCName.Text;
+            //Set the text in Label
             labelCName.Text = textBoxCName.Text;
             this.Hide();
         }
 
     }
 }
+//__________________________________END__________________________________\\

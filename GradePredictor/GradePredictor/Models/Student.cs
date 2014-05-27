@@ -8,7 +8,6 @@ using GradePredictor.Config;
 
 namespace GradePredictor.Models
 {
-    /// <author> Shamal Perera </author>
     /// <datecreated>18-05-2014</datecreated>
     /// <summary>Entity Class</summary>
     public class Student

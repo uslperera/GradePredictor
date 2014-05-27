@@ -74,7 +74,7 @@
             this.buttonQuit.Location = new System.Drawing.Point(217, 108);
             this.buttonQuit.Name = "buttonQuit";
             this.buttonQuit.Size = new System.Drawing.Size(75, 23);
-            this.buttonQuit.TabIndex = 4;
+            this.buttonQuit.TabIndex = 5;
             this.buttonQuit.Text = "Quit";
             this.buttonQuit.UseVisualStyleBackColor = true;
             this.buttonQuit.Click += new System.EventHandler(this.buttonQuit_Click);
@@ -84,7 +84,7 @@
             this.buttonSignIn.Location = new System.Drawing.Point(132, 108);
             this.buttonSignIn.Name = "buttonSignIn";
             this.buttonSignIn.Size = new System.Drawing.Size(75, 23);
-            this.buttonSignIn.TabIndex = 5;
+            this.buttonSignIn.TabIndex = 4;
             this.buttonSignIn.Text = "Sign in";
             this.buttonSignIn.UseVisualStyleBackColor = true;
             this.buttonSignIn.Click += new System.EventHandler(this.buttonSignIn_Click);

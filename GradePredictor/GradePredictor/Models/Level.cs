@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace GradePredictor.Models
 {
-    /// <author> Shamal Perera </author>
     /// <datecreated>18-05-2014</datecreated>
     /// <summary>Model</summary>
     public class Level
